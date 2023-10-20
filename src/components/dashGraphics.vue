@@ -4,11 +4,6 @@
   </div>
 
   <div class="container" v-if="!load">
-    <!-- <div class="filtro">
-      <input v-model="dataInicial" type="date" />
-      <input v-model="dataFinal" type="date" />
-      <button @click="consumirAPI('POST')">Filtrar</button>
-    </div> -->
 
     <div class="graficos">
       <div class="graficos-cards">
@@ -51,25 +46,23 @@
         </div>
 
         <div class="card spark">
-    <div class="card-body">
-      <div class="card-info">
-          <span>{{ dadoscard4.titulo }}</span>
-          <span>{{ dadoscard4.uf }}</span>
-      </div>
-    </div>
-  </div>
-        
+          <div class="card-body">
+            <div class="card-info">
+              <span>{{ dadoscard4.titulo }}</span>
+              <span>{{ dadoscard4.uf }}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <bar class="card grafico" :p_data="lucroEmpresa" /> 
+      <bar class="card grafico" :p_data="lucroEmpresa" />
       <line-a class="card grafico" :p_data="lucroDia" />
-
     </div>
   </div>
 </template>
 
 <script>
- import lineA from "./graphics/line-graphic.vue";
+import lineA from "./graphics/line-graphic.vue";
 import bar from "./graphics/bar-graphic.vue";
 import spark from "./graphics/spark-graphic.vue";
 
@@ -121,21 +114,20 @@ export default {
       this.load = true;
 
       var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
+        method: "GET",
+        redirect: "follow",
       };
 
       fetch("http://127.0.0.1:5000/GetData", requestOptions)
-        .then(response => response.json())
+        .then((response) => response.json())
         .then((data) => {
-
-          console.log(data)
+          console.log(data);
 
           this.dadoscard1.qtd = data.Faturamento;
-          this.dadoscard1.data = data.LinhasFaturamento.faturamento
+          this.dadoscard1.data = data.LinhasFaturamento.faturamento;
 
           this.dadoscard2.qtd = data.Lucro;
-          this.dadoscard2.data = data.GraficoLinhas.lucro
+          this.dadoscard2.data = data.GraficoLinhas.lucro;
 
           this.dadoscard3.qtd = data.QtdeEmpresas;
           this.dadoscard4.uf = data.Uf;
@@ -148,7 +140,7 @@ export default {
 
           this.load = false;
         });
-    }
+    },
   },
   mounted() {
     if (this.load) {
@@ -269,5 +261,4 @@ button {
   font-family: Montserrat, Arial, sans-serif;
   text-align: left;
 }
-
 </style>
