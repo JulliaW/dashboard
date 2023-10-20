@@ -47,7 +47,6 @@ export default {
 body {
   background-color: var(--cor6);
   font-family: Montserrat, Arial, sans-serif;
-  /* font-family: 'Roboto', sans-serif; */
 }
 
 .card {
@@ -85,5 +84,57 @@ body {
 
 .container {
   padding-top: 10px;
+}
+
+.graficos-cards {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.graficos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.line {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.spark {
+  max-width: 300px;
+  max-height: 120px;
+}
+
+@media (max-width: 800px) {
+  .graficos {
+    grid-template-columns: 1fr;
+  }
+}
+
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: block;
+  z-index: 99;
+  background: rgba(165, 165, 165, 0.5);
+}
+
+#loading-image {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  /* top: 50%; */
+  left: 4%;
+  z-index: 100;
+}
+
+.sparkline {
+  width: 50%;
 }
 </style>
